@@ -1,0 +1,62 @@
+{% extends "../base.html" %}
+
+{% block title %}Create a topic | chaint.us{% end %}
+
+{% block head %}
+ <link rel="stylesheet" href="{{ static_url("css/topic.css") }}" type="text/css"/>
+ <script type="text/javascript">
+$(document).ready(function() {
+    $(".nav .active").removeClass("active");
+    $("#nav_topic").addClass("active");
+});
+</script>
+{% end %}
+
+{% block content %}
+<div class="row">
+    
+<div class="span11 topic-content">
+<form action="{{ request.path }}" method="post" id="topic-form">
+<fieldset>
+    <legend>Create a topic</legend>
+    <div class="clearfix">
+        <label for="title">Title</label>
+        <div class="input">
+            <input class="span8 required" type="text" name="title" id="title" />
+        </div>
+    </div>
+    <div class="clearfix">
+        <label for="content">Content</label>
+        <div class="input">
+            <textarea class="span8 required" id="content" name="content" rows="15"></textarea>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="input">
+         <a class="btn primary" href="javascript:submitForm('#topic-form');">Submit</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <a href="javascript:history.go(-1);" type="reset" class="btn">Cancel</a>
+        </div>
+    </div>
+    <div class="input span5">
+        <div class="msg alert-message error">
+        uh... you haven't compeleted the form.
+        </div>
+    </div>
+    {{ xsrf_form_html() }}
+</fieldset>
+</form>
+</div>
+
+<div class="span5 topic-sidebar">
+    <br/>
+    <br/>
+    > <a href="/topics/" style="font-size:14px;">Back to forum</a>
+    <br/>
+    <br/>
+    <br/>
+   <!-- Content is parsed with <a href="http://daringfireball.net/projects/markdown/dingus" target="_blank">markdown</a>.-->
+</div>
+
+</div>
+{% end %}

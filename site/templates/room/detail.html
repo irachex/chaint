@@ -1,0 +1,99 @@
+{% extends "../base.html" %}
+{% block title %}
+    {{ room.title }} | chaint.us
+{% end %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ static_url("css/room.css") }}" type="text/css"/>
+  <script src="{{ static_url("js/jquery.json-2.3.min.js") }}" type="text/javascript"></script>
+  <script src="{{ static_url("js/jquery.doodle.js") }}" type="text/javascript"></script>
+  <script src="{{ static_url("js/comet.js") }}" type="text/javascript"></script>
+  <script src="{{ static_url("js/room.js") }}" type="text/javascript"></script>
+{% end %}
+
+{% block content %}
+
+<div class="page-header">
+<h1 class="pull-left">{{ room.title }} &nbsp; <small class="desc">{{ room.intro }}</small></h1>
+<a href="view/" class="label pull-left">info</a>
+<a href="javascript:downloadImage();" class="label pull-left">download</a> 
+<a href="#" class="label pull-left" data-controls-modal="share-modal" data-backdrop="true" >share</a> 
+{% if current_user and (room.id == current_user.get("id") or current_user.get("role")=="admin") %}
+    <a href="/topic/{{topics[i].id}}/edit/" class="label pull-left">edit</a>
+{% end %}
+</div>
+<div class="row">
+    <div id="tool_container" class="span1">
+        <div id="tool">
+            width
+            <div id="slider">
+               <input type="range" value="10" min="5" max="100" step="5" id="width_slider">
+            </div>
+            color
+            <div id="now_color"/></div>
+            <div id="color_board">
+                <div class="btn_color purple" alt="purple"></div>
+                <div class="btn_color blue" alt="blue"></div>
+                <div class="btn_color green" alt="green"></div>
+                <div class="btn_color yellow" alt="yellow"></div>
+                <div class="btn_color orange" alt="orange"></div>
+                <div class="btn_color pink" alt="pink"></div>
+                <div class="btn_color red" alt="red"></div>
+                <div class="btn_color black" alt="black"></div>
+                <div class="btn_color gray" alt="gray"></div>
+                <div class="btn_color white" alt="white"></div>
+            </div>
+        </div>    
+    </div>
+    
+    <div id="canvas_container" class="span11">
+        <canvas id="wall_layer" width="640px" height="480px"></canvas>
+        <canvas id="public_layer" width="640px" height="480px"></canvas>
+    </div>
+    <div id="info_container" class="span4">
+        <div id="control_container">
+            <a href="javascript:void(0);" id="btn_save" class="btn primary" data-loading-text="Saving...">Save</a>
+            <span class="span2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a href="" class="btn info" data-controls-modal="invite-modal" data-backdrop="true">Invite</a>
+        </div>
+        <div id="chat_container">
+            <ul class="tabs" data-tabs="tabs">
+                <li class="active"><a href="#chat-box">Chat</a></li>
+                <li><a href="#online-box">Online(<span class="room-online-num">{{len(onlines)}}</span>)</a></li>
+            </ul>
+            <div class="pill-content">
+                <div id="online-box" class="tab-pane">
+                    {% for online in onlines %}
+                        <a id="uo{{online["id"]}}" href="/people/{{online["url"]}}/"class="user-hangout"><img src="{{online["icon"]}}" rel="twipsy" data-original-title="{{online["name"]}}" ></a> 
+                    {% end %}
+                </div>
+                <div id="chat-box" class="tab-pane active">
+                    <div id="inbox"></div>
+                    <div id="input">
+                        <form action="message/new/" method="post" id="messageform">
+                            <input name="body" id="message"/>
+                            <input type="hidden" name="next" value="{{ request.path }}"/>
+                            {% module xsrf_form_html() %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="invite-modal" class="modal hide fade" style="display: none; ">
+    <div class="modal-header">
+        <a href="#" class="close">×</a>
+        <h3>Invite</h3>
+    </div>
+    <div class="modal-body">
+    <p>Send this link to your friend.</p>
+    <p><input type="text" value="http://chaint.us/room/{{room.id}}/{%if room.password %}?password={{room.password}}{% end %}"/></p>
+    </div>
+</div>
+<div id="color-picker" class="popover fade right in" style="display: block; top: 164.5px; left: 220px; display:none;">
+    <div class="arrow"></div>
+    <div class="inner"><div><input type="text" value="" class="span3"></div><canvas id="color-img" width="200px" height="200px"></canvas></div>
+</div>
+<img id="saved-img" src="{{room.file}}" style="display:none;"/>
+{% end %}

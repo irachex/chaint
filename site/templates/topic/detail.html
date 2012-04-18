@@ -1,0 +1,107 @@
+{% extends "../base.html" %}
+
+{% block title %}
+ {{topic.title}} &raquo; Topics | chaint.us
+{% end %}
+
+{% block head %}
+ <link rel="stylesheet" href="{{ static_url("css/topic.css") }}" type="text/css"/>
+ <script type="text/javascript">
+$(document).ready(function() {
+    $(".nav .active").removeClass("active");
+    $("#nav_topic").addClass("active");
+});
+</script>
+{% end %}
+
+{% block content %}
+<div class="row">
+    
+    <div class="span11 topic-content">
+        <div class="topic-detail">
+            <h1>{%if page>1%}Reply: {%end%}{{topic.title}}</h1>
+            <div class="topic-list">
+            {% for i in range(len(topics)) %}
+              <div class="topic" id="reply{{i}}">
+                {% if i==len(topics)-1%}<div id="last"></div>{% end %}
+                <div class="pull-left avatar"><a href="/people/{{topics[i].url}}/"><img src="{{topics[i].icon}}" class="topic-icon"/></a></div>
+                <div class="topic-info">
+                    <div class="topic-author"><a href="/people/{{topics[i].url}}/" class="user-link">{{topics[i].name}}</a></div>
+                    <div class="topic-post">{{topics[i].content}}</div>
+                    <div class="topic-time">
+                        {{topics[i].created}} 
+                        {% if current_user and (topic.uid == current_user.get("id") or current_user.get("role")=="admin") %}
+                            {% if topics[i].id==topic.id %}
+                                 &nbsp; • &nbsp; 
+                                <a href="/topic/{{topics[i].id}}/edit/" class="topic-control">EDIT</a>
+                            {% end %}
+                            {% if current_user.get("role")=="admin" %}
+                                 &nbsp; • &nbsp; 
+                                <a href="/topic/{{topics[i].id}}/delete/" class="topic-control">DELETE</a>
+                            {% end %}
+                            </span>
+                        {% end %}
+                    </div>
+                </div>
+                {% if topics[i].id==topic.id %}
+                <br/>
+                <div class="line"></div>
+                {% end %}
+              </div>
+            {% end %}
+            </div>
+            {% if page*50>=topic.reply_count %}
+                {% if current_user%}
+                    <br/><br/>
+                    <div class="reply-cell">
+                        <div class="pull-left avatar"><img src="{{current_user["icon"]}}" class="topic-icon"/></div>
+                        <form action="reply/" method="POST" class="reply-form">
+                            <textarea class="span8" id="content" name="content" rows="6" placeholder="Your reply" required="required"></textarea> 
+                            <br/><br/>
+                            <input type="submit" class="btn primary" value="Submit" />
+                            {{ xsrf_form_html() }}
+                        </form>
+                    </div>
+                {% else %}
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/auth/login/" class="btn info">I want to reply</a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                {% end %}
+            {% end %}
+            {% if topic.reply_count>50 %}
+            <div class="pagination">
+                <ul>
+                    <li class="prev {% if page==1 %}disabled{%end%}"><a href="?page={{max(1,page-1)}}">← Previous</a></li>
+                    {% for i in range(max(1,page-2), (topic.reply_count-1)/50+2) %}
+                    <li {% if i==page %}class="active"{%end%}><a href="?page={{i}}">{{i}}</a></li>
+                    {% end %}
+                    <li class="next {% if page==(topic.reply_count-1)/50+1 %}disabled{%end%}"><a href="?page={{min(page+1, (topic.reply_count-1)/50+1)}}">Next →</a></li>
+                </ul>
+            </div>
+            {% end %}
+                
+        </div>
+    </div>
+    
+    <div class="span5 topic-sidebar">
+        > <a href="/topics/">Back to forum</a>
+        <br/>
+        <br/>
+        <br/>
+        <h4>Recent Posts</h4>
+        <ul>
+            {% for post in recent_posts %}
+            <li><a href="/topic/{{post.id}}/">{{post.title}}</a></li>
+            {% end %}
+        </ul>
+        <br/>
+        
+        > <a href="/topic/create/">Create a topic</a>
+        
+    </div>
+</div>
+{% end %}

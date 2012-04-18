@@ -1,0 +1,62 @@
+{% extends "../base.html" %}
+
+{% block title %}Create a room | chaint.us{% end %}
+
+{% block head %}
+ <link rel="stylesheet" href="{{ static_url("css/topic.css") }}" type="text/css"/>
+{% end %}
+
+{% block content %}
+<div class="row">
+    
+<div class="span11 topic-content">
+<form action="{{ request.path }}" method="post">
+<fieldset>
+    <legend>Create a room</legend>
+    <div class="clearfix required">
+        <label for="title">Title</label>
+        <div class="input">
+            <input class="span8" type="text" name="title" id="title"/>
+        </div>
+    </div>
+    <div class="clearfix">
+        <label for="intro">Desciption</label>
+        <div class="input">
+            <textarea class="span8" id="intro" name="intro" rows="14"></textarea>
+        </div>
+    </div>
+    <div class="clearfix">
+        <label>Permission<a href="#" rel="popover" data-placement="above" data-content="Public means anyone can join your creation. Invited means only those who invited by you can join." data-original-title="Tip">?</a>
+        </label>
+        <div class="input">
+          <label for="public" style="width:auto;">
+            <input id="public" name="private" type="radio" value="false" class="pull-left" checked="checked"/>&nbsp;Public</label>
+        <span class="span1 pull-left">&nbsp;</span>
+         <label for="private" style="width:auto;">
+            <input id="private" name="private" type="radio" value="true" class="pull-left"/>&nbsp;Invited</label>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="input">
+         <input type="submit" class="btn primary" value="Submit" />
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <a href="javascript:history.go(-1);" type="reset" class="btn">Cancel</a>
+        </div>
+    </div>
+    {{ xsrf_form_html() }}
+</fieldset>
+</form>
+</div>
+
+<div class="span5 topic-sidebar">
+    <br/>
+    <br/>
+    > <a href="/rooms/" style="font-size:14px;">Back to Explore</a>
+    <br/>
+    <br/>
+    <br/>
+   <!-- Content is parsed with <a href="http://daringfireball.net/projects/markdown/dingus" target="_blank">markdown</a>.-->
+</div>
+
+</div>
+{% end %}

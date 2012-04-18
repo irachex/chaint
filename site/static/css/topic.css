@@ -1,0 +1,160 @@
+.container > .content {
+    padding:0;
+    background: #f5f5f5;
+}
+.row {
+    margin-left:0;
+}
+.content .topic-content, .content .topic-sidebar{
+    min-height: 500px;
+}
+.content .topic-content {
+    padding: 40px 0px 20px 20px;
+    background: #fff;
+    margin-left:0;
+    -webkit-border-radius: 0 0 0 6px;
+       -moz-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+    border-right: 1px solid #eee;
+    
+}
+.content .topic-sidebar {
+    color: #666;
+    padding: 40px 20px 20px 19px;
+    margin-left:0;
+}
+    .topic-sidebar h4 {
+        color: #666;
+    }
+    .topic-sidebar ul li {
+        margin-bottom: 6px; 
+    }
+.user-link, .user-link:hover {
+    color: #777;
+    font-weight: bolder;
+}
+
+/* ============================= list ===========================*/
+
+.topic-list-header {
+    margin: 0 20px 20px 10px;
+    vertical-align: top;
+}
+.topic-list {
+    margin-right: 20px;
+}
+    .topic-list .topic {
+        min-height: 50px;
+        font-size: 14px;
+        border-bottom: 1px dashed #DDD;
+        vertical-align: top;
+        padding: 15px 0 15px 0;
+    }
+    .topic:last-child {
+        border-bottom:0;
+    }
+    .topic .topic-icon {
+        width: 48px;
+        height: 48px;
+    }
+    .topic .topic-info {
+        padding-left: 58px;
+    }
+    .topic .replies {
+        text-align: right;
+        vertical-align: middle;
+        padding-top:10px;
+    }
+        .topic .replies .label {
+            font-size: 12px;
+            vertical-align: middle;
+        }
+            .topic .replies .label:hover {
+                text-decoration:none;
+                color: #fff;
+                background: #62CFFC;
+            }    
+    .topic .topic-title {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }   
+    .topic .topic-user {
+        font-size: 12px;
+        color: #999;
+        padding-top: 5px;
+    }
+
+.pagination {
+    text-align: center;
+    margin-left: 130px;
+    margin-top: 30px;
+}
+.user-hangout, .user-hangout img {
+    width: 40px;
+    height: 40px;
+    line-height:0px;
+}
+.user-hangout {
+    padding-top: 25px;
+}
+
+/* =========================== create ============================*/
+fieldset legend {
+    padding-left: 90px;
+}
+label {
+    width: 70px;
+}
+form .input {
+    margin-left: 90px;
+}
+/* =========================== detail ============================*/
+.topic-detail {
+    margin-right: 20px;
+    font-size: 14px;
+}
+.topic-detail h1 {
+    font-size: 1.6em;
+    line-height: 1.1em;
+}
+.topic-detail .topic {
+    border-bottom: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.topic-detail .topic-info {
+    padding-left: 68px;
+}
+    .topic-author {
+        width: 250px;
+    }
+    .topic-time {
+        color: #bbb;
+        font-size: 10px;
+        margin-top:10px;
+    }
+        .topic-control {
+            padding: 2px 4px 2px 4px;
+            color: #999 ;
+            font-weight:bolder;
+            -webkit-border-radius: 2px;
+               -moz-border-radius: 2px;
+                    border-radius: 2px;
+        }
+        .topic-control:hover {
+            text-decoration:none;
+            color: #fff;
+            background: #aaa;
+            text-shadow:none;
+        }
+.topic-detail .topic-post {
+    margin:10px 0 0 0;
+    padding:0;
+}
+.reply-form {
+    padding-left: 68px;
+}
+.line {
+    border-bottom: 1px dashed #ddd;
+    margin-top: 20px;
+}

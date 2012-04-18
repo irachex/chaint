@@ -1,0 +1,43 @@
+{% extends "../base.html" %}
+
+{% block title %}
+  Explore | chaint.us
+{% end %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ static_url("css/explore.css") }}" type="text/css"/>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".nav .active").removeClass("active");
+    $("#nav_explore").addClass("active");
+});
+</script>
+{% end %}
+
+{% block content %}
+<div class="room-list-header">
+    <a href="/auth/login/" class="pull-right btn success room-create" {% if current_user %}data-controls-modal="create-room" data-backdrop="true" {% end %}>Create</a>
+    <h3 class="pull-left" >Rooms&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+    <ul class="pills">
+        <li {% if True or sortby=="created" %}class="active"{%end%}><a href="?sortby=created">Recent Created</a></li>
+        <li {% if sortby=="likes" %}class="active"{%end%}><a href="?sortby=likes">Most Likes</a></li>
+        <li {% if sortby=="views" %}class="active"{%end%}><a href="?sortby=views">Most Views</a></li>
+    </ul>
+</div>
+<div class="room-list">
+    {% for room in rooms %}
+    <div class="room">
+        <a href="/room/{{room.id}}/view/"><img {% if room.file %}src="{{ room.file }}"{% end %}/></a>
+        <div class="room-info">
+            <div class="room-title pull-left">
+                <a href="">{{room.title}}</a>
+            </div>
+            <div class="room-rating pull-right">
+                <span style="font-size:16px;color:#ff657e;">&#9829;</span>&nbsp;{{room.likes}}
+            </div>
+        </div>
+    </div>
+    {% end %}
+    <div style="clear:both"></div>
+</div>
+{% end %}

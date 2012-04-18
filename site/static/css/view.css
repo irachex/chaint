@@ -1,0 +1,35 @@
+h1 {
+	padding-left:20px;
+}
+.left-col {
+	padding-left:20px;
+	padding-right:20px;
+}
+.img-content img {
+    width: 640px;
+    height: 480px;
+    background: #D6D6D6 url("../img/loading.gif") center center no-repeat ;
+}
+.control {
+	text-align: center;
+}
+.stats {
+	margin-top:30px;
+	text-align: center;
+}
+    .stat-col {
+    	width: 70px;
+    	float:left;
+    }
+        .stat-col .num {
+        	font-size: 23px;
+        	letter-spacing: -0.05em;
+        	font-weight: bold;
+        	padding: 10px;
+        }
+        .stat-col .col-name {
+        	font-size: 11px;
+        }
+.intro {
+	margin-top: 30px;
+}

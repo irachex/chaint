@@ -1,0 +1,194 @@
+.container > .content {
+    background: #f5f5f5;
+    height: 540px;
+}
+.page-header {
+    background-color: #f5f5f5;
+    padding: 10px 30px 0px;
+    margin: -20px -20px 20px;
+    overflow:hidden;
+}
+    .page-header h1 {
+        width: 690px;
+        overflow:hidden;
+        white-space: nowrap;
+        -o-text-overflow:clip;
+        text-overflow: clip;
+    }
+    .label { margin-left:10px;margin-top:10px;}
+    .label:hover {
+        color:#fff;
+        background:#62CFFC;
+        text-decoration:none;
+    }
+
+/* ========================== tool ===============================*/
+#tool_container {
+    width: 55px;
+    text-align:center;
+    padding-right:5px;
+    margin-top:10px;
+    color:#ddd;
+}
+#tool { 
+    width: 40px;
+    text-align:center;
+    padding:5px;
+    padding-top:20px;
+    padding-bottom: 10px;
+    
+    background: black;
+    background: -webkit-gradient(linear,left top,left bottom,from(rgba(16, 19, 12, .9)),to(rgba(31, 35, 39, .9)),color-stop(0.9,rgba(6, 8, 10, .9)));
+    background: -moz-linear-gradient(top,rgba(46, 49, 52, .9),rgba(6, 8, 10, .9) 90%,rgba(31, 35, 39, .9));
+    background: linear-gradient(top,rgba(16, 19, 12, .9),rgba(6, 8, 10, .9) 90%,rgba(31, 35, 39, .9));
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.2) inset,0 1px 3px rgba(0,0,0,.8);
+    -moz-box-shadow: 0 0 1px rgba(255,255,255,.2) inset,0 1px 3px rgba(0,0,0,.8);
+    -o-box-shadow: 0 0 1px rgba(255,255,255,.2) inset,0 1px 3px rgba(0,0,0,.8);
+    box-shadow: 0 0 1px rgba(255,255,255,.2) inset,0 1px 3px rgba(0,0,0,.8);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);   
+    
+}
+
+#now_width {
+    color: #fff;
+    font-size:0.7em;
+    font-family:Futura;
+    z-index:9;
+    position:absolute;
+    left:-15px;
+    text-align:right;
+    display:none;
+}
+
+#color-picker .inner {
+    width: 200px;
+    padding: 5px;
+    box-shadow:0;
+}
+#color-picker .close {
+    color: #fff;
+    text-shadow: 0 1px 0 #000;
+}
+#color-picker input {
+    background-color: rgba(100,100,100,0.5);
+    border: 0;
+    width: 90%;
+    margin: 5px 5px 5px 5px;
+    color: #fff;
+}
+
+#slider {
+    height: 65px;
+    margin-bottom: 20px;
+    margin-top:20px;
+    width:40px;
+}
+
+#width_slider {
+    -webkit-appearance: slider-vertical;
+    transform: rotate(90deg) translate(15px,24px);
+    -webkit-transform:  rotate(90deg) translate(15px,24px);  
+    -moz-transform:rotate(90deg) translate(15px,24px);
+    background: -webkit-linear-gradient(top,#999,#666);
+    box-shadow: 1px 0px 2px #2c2c2c inset;
+    width: 80px;
+    height: 1px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor:row-resize;
+    -webkit-appearance: none !important;
+}
+
+input#width_slider::-webkit-slider-thumb{
+    width: 12px;
+    height: 12px;
+    background:-webkit-gradient(radial,0 0,0,0 0,14,from(#aaa),to(#ccc),color-stop(80%,#ccc));
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-box-shadow: 0 0 6px #000;
+    -webkit-border-radius: 6px;
+    -webkit-appearance: none !important;
+}
+
+#now_color { 
+    width: 30px; 
+    height: 25px; 
+    background-color: black;  
+    margin-left:auto; 
+    margin-right:auto;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    border: 1px #333 solid;
+}
+
+.btn_color { 
+width: 20px; height: 20px; margin:5px; margin-left:auto; margin-right:auto; 
+cursor:pointer;
+border-radius: 1px;
+}
+.purple { background-color: #6633cc; }
+.blue { background-color: #0099ff; }
+.green { background-color: #00cc00; }
+.yellow { background-color: #ffff00; }
+.orange { background-color: #ff6600; }
+.pink { background-color: #ff99ff; }
+.red { background-color: #ff0000; }
+.black { background-color: #000000; }
+.gray { background-color: #999999; }
+.white { background-color: #ffffff; }
+
+/* ================================ canvas ================================*/
+
+#canvas_container {
+    height: 480px;
+    background: #fff;
+    margin-left:0;
+}
+#canvas_container canvas {
+    position: absolute;
+}
+#wall_layer {
+    z-index: 100;
+}
+#public_layer {
+    z-index: 99;
+}
+#saved_layer {
+    z-index: 98;
+}
+/* =============================== info ====================================*/
+#info_container {
+    margin-left:20px;
+}
+/* =============================== control =================================*/
+#control_container {
+    height: 50px;
+    text-align:center;
+}
+/* =============================== chat ====================================*/
+#chat_container {
+}
+.tabs .active > a, .tabs .active > a:hover{
+    background: #f5f5f5;
+}
+#online-list {
+    height: 300px;
+    border-bottom: 1px solid #eee;
+}
+#inbox {
+    height: 330px;
+    width:220px;
+    margin-bottom: 15px;
+    text-align: bottom;
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+#message {
+}
+.user-hangout {
+    padding-top:32px;
+}

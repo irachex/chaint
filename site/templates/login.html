@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="width: 100%; text-align: center; padding-top: 200px;">
+<a href="/auth/douban/"><img src="/static/img/doubanlogin.png?v=456"/></a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="/auth/weibo/"><img src="/static/img/weibologin.png?v=123"/></a><br/><br/>
+<a data-controls-modal="share-modal" data-backdrop="true" href="/auth/facebook/">Facebook</a>
+<a data-controls-modal="share-modal" data-backdrop="true" href="/auth/twitter/">Twitter</a>
+<a data-controls-modal="share-modal" data-backdrop="true" href="/auth/google/">Google</a><br/>
+</div>
+{% end %}

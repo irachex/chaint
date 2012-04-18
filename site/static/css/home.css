@@ -1,0 +1,21 @@
+.guide {
+    text-align:center;margin-bottom: 20px;
+}
+.guide-inner {
+	padding: 10px;
+	border-radius: 7px;
+	   height: 180px;
+}
+.guide-inner p {
+	font-size: 14px;
+	color: #999;
+}
+.guide-inner:hover {
+	background: rgba(138,209,234, 0.2);
+}
+.guide-inner:hover p {
+	color: #666;
+}
+.guide-icon {
+	text-align:center;height: 70px;padding-top: 40px;
+}

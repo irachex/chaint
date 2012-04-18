@@ -1,0 +1,78 @@
+html, body {
+    background: #eee url('../img/bg.png') bottom left repeat;
+}
+body {
+}
+ #userpanel {
+     margin-right: -20px;
+ }
+ .user-icon {
+     width: 100px;
+ }
+    .user-icon img {
+         width: 28px;
+         height: 28px;
+         float: left;
+         margin-top:-5px;
+         margin-left:5px;
+         border: 1px solid rgba(0, 0, 0, 0.1);
+         box-shadow: 0 1px 1px rgba(255, 255, 255, 0.15);
+     }
+     .user-icon span {
+         margin: 0 0 0 10px;
+     }
+     .dropdown-menu {
+         min-width: 120px;
+     }
+     
+.container > .content {
+    min-height: 500px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 -20px; 
+    -webkit-border-radius: 0 0 6px 6px;
+       -moz-border-radius: 0 0 6px 6px;
+            border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+            box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+
+.footer {
+    margin-top: 17px;
+}
+a:hover {
+    -webkit-transition-property: color, background-color;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing: ease-out;
+    -o-transition-property: color,background-color;
+    -o-transition-duration: 0.5s;
+    -o-transition-timing: ease-out;
+    -moz-transition-property: color;
+    -moz-transition-duration: 0.5s;
+    -moz-transition-timing: ease-out;
+    -ms-transition-property: color;
+    -ms-transition-duration: 0.5s;
+    -ms-transition-timing: ease-out;
+    transition-property: color;
+    transition-duration: 0.5s;
+    transition-timing: ease-out;
+}
+.clear {
+    clear:both;
+}
+
+/* ======================= new room form ===============================*/
+.popover {
+ z-index: 12000;
+}
+#room-form label {
+    width: 90px;
+}
+#room-form .input {
+    margin-left: 110px;
+}
+.msg {
+    display:none;
+}

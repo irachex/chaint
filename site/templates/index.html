@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head%}
+    <link rel="stylesheet" href="{{ static_url("css/home.css")}}" type="text/css"/>
+{% end %}
+
+{% block content %}
+<div class="hero-unit">
+    <h1>Chat + Paint</h1>
+    <p>Chaint is a website that people can doodle together just like Berlin Wall online.</p>
+    <p><a class="btn primary large" href="/room/100000/">Try it now &raquo;</a></p>
+</div>
+
+<div class="row guide">
+    <div class="span5 guide-inner">
+        <p class="guide-icon"><img src="/static/img/paint.png?v=123"/></p>
+        <!--<h2>Create</h2>-->
+        <p>Doodle is a lifestyle that express your feeling and opinion in painting</p>
+    </div>
+    <div class="span5 guide-inner">
+        <p class="guide-icon"><img src="/static/img/chat.png?v=12"/></p>
+        <p>Communication & cooperation make great ideas a reality</p>
+    </div>
+    <div class="span5 guide-inner">
+        <p class="guide-icon"><img src="/static/img/share.png?v=43"/></p>
+        <p>Share excellent creation with your friends.</p>
+    </div>
+</div>
+
+{% end %}

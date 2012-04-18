@@ -1,0 +1,79 @@
+{% extends "../base.html" %}
+
+{% block title %}
+ Topics | chaint.us
+{% end %}
+
+{% block head %}
+ <link rel="stylesheet" href="{{ static_url("css/topic.css") }}" type="text/css"/>
+ <script type="text/javascript">
+$(document).ready(function() {
+    $(".nav .active").removeClass("active");
+    $("#nav_topic").addClass("active");
+});
+</script>
+{% end %}
+
+{% block content %}
+<div class="row">
+    
+    <div class="span11 topic-content">
+        <div class="topic-list-header">
+            <ul class="pills pull-right">
+                <li {% if sortby=="replied" %}class="active"{%end%}><a href="?sortby=replied">Recent Replied</a></li>
+                <li {% if sortby=="posted" %}class="active"{%end%}><a href="?sortby=posted">Recent Posted</a></li>
+                <li {% if sortby=="replies" %}class="active"{%end%}><a href="?sortby=replies">Most Replies</a></li>
+            </ul>
+            <h2>Topics</h2>
+        </div>
+        <div class="topic-list">
+        {% for topic in topics %}
+        <div class="topic">
+            <div class="pull-left avatar"><a href="/people/{{topic.url}}/"><img src="{{topic.icon}}" class="topic-icon"/></a></div>
+            <div class="pull-right replies">
+                    <a href="/topic/{{topic.id}}/?page=last#last" class="label {% if topic.reply_count>0 and not topic.read_status%}success{% end %}" rel="twipsy" data-original-title="{% if topic.reply_count>0 and not topic.read_status %}Something new{% else %}No more unread{% end %}">&nbsp;{{topic.reply_count}}&nbsp;</a>
+            </div>
+            <div class="topic-info">
+                <div class="topic-title"><a href="/topic/{{topic.id}}/">{{topic.title}}</a></div>
+                <div class="topic-user">
+                    Posted by <a href="/people/{{topic.url}}/" class="user-link">{{topic.name}}</a> at {{topic.created}}
+                    {% if topic.reply_name %}
+                     &nbsp; • &nbsp; Replied by <a href="/people/{{topic.reply_url}}/" class="user-link">{{topic.reply_name}}</a> at {{topic.replied}}
+                    {% end %}
+                </div>
+            </div>
+        </div>
+        {% end %}
+        </div>
+        {% if len(topics)==20 %}
+        <div class="pagination">
+            <ul>
+                <li class="prev {% if page==1 %}disabled{%end%}"><a href="?page={{max(1,page-1)}}">← Previous</a></li>
+                {% for i in range(max(1,page-2), max(1,page-2)+5) %}
+                <li {% if i==page %}class="active"{%end%}><a href="?page={{i}}">{{i}}</a></li>
+                {% end %}
+                <li class="next"><a href="?page={{page+1}}">Next →</a></li>
+            </ul>
+        </div>
+        {% end %}
+    </div>
+    
+    <div class="span5 topic-sidebar">
+        <a href="/topic/create/" class="btn large success">Create a topic</a>
+        <br/>
+        <br/>
+        <br/>
+        Feel free to talk about anything. ◕‿◕
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h4>People hanging out here</h4>
+        <div>
+            {% for user in users %}
+            <a href="/people/{{user.url}}/" rel="twipsy" data-original-title="{{user.name}}" class="user-hangout"><img src="{{user.icon}}"/></a>
+            {% end %}
+        </div>
+    </div>
+</div>
+{% end %}

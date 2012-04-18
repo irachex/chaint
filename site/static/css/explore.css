@@ -1,0 +1,67 @@
+.content {
+    }
+    .room-list-header {
+        margin-left:8px;
+        margin-right:8px;
+    }
+        .room-create {
+            margin-top:5px;
+        }
+    .room-list {
+        margin-left:2px;
+    }
+    .room {
+    	float:left;
+    	width:300px; 
+    	height:225px;
+    	margin: 0px 6px 18px;
+    	border-bottom: 1px solid white;
+    	background: #D6D6D6 url("../img/loading.gif") center center no-repeat ;
+    	position: relative;
+    	overflow:hidden;
+    	line-height:0px;
+    }
+        .room a {
+            color: #fff;
+        }
+        .room:hover a {
+            -webkit-transition-property: color;
+            -webkit-transition-duration: 0.5s;
+            -webkit-transition-timing: ease-out;
+            -o-transition-property: color;
+            -o-transition-duration: 0.5s;
+            -o-transition-timing: ease-out;
+            -moz-transition-property: color;
+            -moz-transition-duration: 0.5s;
+            -moz-transition-timing: ease-out;
+            -ms-transition-property: color;
+            -ms-transition-duration: 0.5s;
+            -ms-transition-timing: ease-out;
+            transition-property: color;
+            transition-duration: 0.5s;
+            transition-timing: ease-out;
+            color: #87D1EC !important;
+            text-decoration:none;
+        }
+    .room-info {
+    	position: absolute;
+    	bottom: 0;
+    	height: 50px;
+    	width: 100%;
+    	background: rgba(0,0,0,0.5);
+    	color: #fff;
+    	line-height: 1em;
+    	font-weight: 300;
+    }
+        .room-title {
+        	font-size: 18px;
+        	margin: 18px 0px 0px 10px;
+        }
+        .room-rating {
+        	margin: 18px 10px 0px 0px;
+        	font-size: 22px;
+        }
+    img {
+    	width: 100%;
+        height: 100%;
+    }
